@@ -1,9 +1,21 @@
-<h2>Cocktails</h2>
+<!-- Top banner -->
 
-<ul>
-<% @cocktails.each do |cocktail| %>
-   <li><%= link_to cocktail.name, cocktail_path(cocktail)  %> </li>
-<% end %>
-</ul>
+<%= render 'shared/banner',
+    title: "Smoothie Heaven",
+    subtitle: "Delicious smoothies for all occasions",
+    cta: "Add your favorite"
+%>
 
-<%= link_to "Add Cocktail", new_cocktail_path  %>
+<!-- card grid -->
+
+
+<div class="container">
+  <h2>Smoothies</h2>
+  <div class="row">
+    <% @cocktails.each do |c| %>
+      <div class="col-xs-12 col-md-3">
+        <%= render 'shared/card', name: c.name, link: cocktail_path(c) %>
+      </div>
+    <% end %>
+  </div>
+</div>

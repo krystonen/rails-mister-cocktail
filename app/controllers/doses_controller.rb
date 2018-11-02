@@ -1,10 +1,4 @@
 class DosesController < ApplicationController
-
-  def new
-    @cocktail = Cocktail.find(params[:cocktail_id])
-    @dose = Dose.new
-  end
-
   def create
     @cocktail = Cocktail.find(params[:cocktail_id])
     @dose = Dose.new(dose_params)
@@ -12,15 +6,15 @@ class DosesController < ApplicationController
     if @dose.save
       redirect_to cocktail_path(@cocktail)
     else
-      render :new
+      render 'cocktails/show' # it's the direction to the file!, doesn't redirect
+    # ...as we are in a different file
     end
   end
 
   def destroy
     @dose = Dose.find(params[:id])
-    cocktail_id = @dose.cocktail_id
     @dose.destroy
-    redirect_to cocktail_path(cocktail_id)
+    redirect_to cocktail_path(@dose.cocktail)
   end
 
   private

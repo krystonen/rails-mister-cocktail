@@ -1,0 +1,42 @@
+.show-container {
+  width: 600px;
+  margin: 50px auto;
+  background-color: #e6e6e6;
+  text-align: center;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.show-container h2 {
+  padding-bottom: 10px;
+}
+.show-btn {
+  background-color: #7DCE82;
+  outline-style: none;
+  border: none;
+  border-radius: 3px;
+  }
+ .show-btn:hover {
+    background-color: #67A96B;
+  }
+
+ .show-btn:active {
+    background-color: #67A96B;
+  }
+
+li {
+  list-style-type: none;
+  padding-bottom: 10px;
+}
+
+.show-add-ingredient {
+  border-top: 1px solid #cccccc;
+  padding: 20px 0;
+  text-align: left;
+}
+
+.show-links {
+  padding-top: 20px;
+  border-top: 1px solid #cccccc;
+  color: #7DCE82 !important;
+}

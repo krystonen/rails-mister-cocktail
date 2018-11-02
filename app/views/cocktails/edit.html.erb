@@ -1,7 +1,10 @@
-<h2>Edit page</h2>
+<h2>Edit the smoothie</h2>
 
 <%= simple_form_for(@cocktail) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.submit "Edit cocktail" %>
 <% end  %>
+
+<!-- add this to show -->
+<p><%= link_to "Edit cocktail", edit_cocktail_path %> </p>

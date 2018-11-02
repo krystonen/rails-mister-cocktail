@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #7DCE82;
 }
 
 /* Logo */
@@ -41,7 +42,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: #7DCE82;
   text-decoration: none;
 }
 
@@ -74,4 +75,13 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.btn-navbar {
+  border-radius: 5px;
+}
+
+.fas {
+  color: #7DCE82;
+  font-size: 2em;
 }

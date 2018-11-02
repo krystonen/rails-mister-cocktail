@@ -1,7 +1,12 @@
-<h2>Add your cocktail</h2>
 
+
+<!-- New submit form -->
+
+<div class="show-container" >
+  <h2>Add your smoothie</h2>
 <%= simple_form_for(@cocktail) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.submit "Add cocktail" %>
+  <%= f.submit "Add smoothie" %>
 <% end  %>
+</div>

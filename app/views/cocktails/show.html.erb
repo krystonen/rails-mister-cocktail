@@ -1,20 +1,30 @@
-<h2>Cocktail Show page</h2>
+<!-- Top banner -->
 
-<%= @cocktail.name %>
-<!-- <p> ingredients here</p>
-<%= @cocktail.ingredients %> -->
-<p>Details of cocktail:</p>
+<%= render 'shared/banner',
+    title: @cocktail.name,
+    subtitle: "The secret lies in the details",
+    cta: "Add your favorite one"
+%>
 
-  <% @cocktail.doses.each do |cocktail| %>
-    <p> <%= cocktail.description %> </p>
-
-  <% end %>
-
-<p><%= link_to "Delete this description", dose_path, method: :delete, data: { confirm: "Are you sure?"}%></p>
-
-
-<p><%= link_to "Edit cocktail", edit_cocktail_path %> </p>
-<p><%= link_to "Delete this cocktail", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?"}%></p>
-
-<p><%= link_to "View all cocktails", cocktails_path %></p>
-
+<!-- Ingredients -->
+<div class="show-container">
+  <div class="show-ingredients">
+    <h2>Ingredients:</h2>
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+        <li>
+          <%= dose.description %> of <%= dose.ingredient.name %>
+          <%= link_to "Delete", dose_path(dose), method: :delete, class: "btn btn-danger btn show-btn" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="show-add-ingredient">
+    <p>Add more ingredients:</p>
+      <%= render "doses/form", cocktail: @cocktail, dose: Dose.new%>
+  </div>
+  <div class="show-links">
+    <p><%= link_to "Delete this cocktail", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?"}%></p>
+    <p><%= link_to "View all cocktails", cocktails_path %></p>
+  </div>
+</div>

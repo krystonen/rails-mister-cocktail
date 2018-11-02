@@ -9,20 +9,87 @@
 require 'open-uri'
 require 'json'
 
-Ingredient.delete_all
 
-url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+puts "Destroying doses"
 
-file = open(url).read
+Dose.destroy_all
 
-data = JSON.parse(file)
+puts "Creating ingredients...."
 
-# p data.first[1].class #array
-# p data.first[1]
-# p data.first[1][0].class #hash
-# p data.first[1][0]
-# p data.first[1][0]["strIngredient1"] #one item
+Ingredient.destroy_all
 
-data.first[1].each do |i|
-  Ingredient.create(name: i["strIngredient1"])
-end
+Ingredient.create!(
+  [
+    {
+      name: "Wheet Grass"
+    },
+    {
+      name: "Spinach"
+    },
+    {
+      name: "Spirulina"
+    },
+    {
+      name: "Apple juice"
+    },
+    {
+      name: "Cucumber"
+    },
+    {
+      name: "Blue Berries"
+    },
+    {
+      name: "Strawberries"
+    }
+  ]
+)
+
+puts "Creating cocktails..."
+
+Cocktail.destroy_all
+
+Cocktail.create!(
+  [
+    {
+      name: "Margarita"
+    },
+    {
+      name: "Cuba Libre"
+    },
+    {
+      name: "Sex on the beach"
+    },
+    {
+      name: "Skinny bitch"
+    },
+    {
+      name: "Cosmopolitan"
+    },
+    {
+      name: "Negroni"
+    },
+    {
+      name: "Chuck Berry"
+    }
+  ]
+)
+
+
+
+# Ingredient.delete_all
+
+# url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+
+# file = open(url).read
+
+# data = JSON.parse(file)
+
+# # p data.first[1].class #array
+# # p data.first[1]
+# # p data.first[1][0].class #hash
+# # p data.first[1][0]
+# # p data.first[1][0]["strIngredient1"] #one item
+
+# data.first[1].each do |i|
+#   Ingredient.create(name: i["strIngredient1"])
+# end
