@@ -1,10 +1,12 @@
 <!-- Top banner -->
 
-<%= render 'shared/banner',
-    title: @cocktail.name,
-    subtitle: "The secret lies in the details",
-    cta: "Add your favorite one"
-%>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @cocktail.photo.present? ? @cocktail.photo : "card_img2.jpg" , crop: :scale, gravity: :center; %>')">
+  <div class="banner-content">
+    <h1><%= @cocktail.name %></h1>
+    <p>The secret lies within the details</p>
+  </div>
+</div>
 
 <!-- Ingredients -->
 <div class="show-container">
@@ -24,7 +26,9 @@
       <%= render "doses/form", cocktail: @cocktail, dose: Dose.new%>
   </div>
   <div class="show-links">
-    <p><%= link_to "Delete this cocktail", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?"}%></p>
-    <p><%= link_to "View all cocktails", cocktails_path %></p>
+    <p><%= link_to "Edit smoothie", edit_cocktail_path %> </p>
+    <p><%= link_to "Delete this smoothie", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?"}%></p>
+    <p><%= link_to "View all smoothies", cocktails_path %></p>
   </div>
 </div>
+

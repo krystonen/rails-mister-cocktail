@@ -1,10 +1,23 @@
-<h2>Edit the smoothie</h2>
 
-<%= simple_form_for(@cocktail) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit "Edit cocktail" %>
-<% end  %>
+<div class="show-container" >
+  <h2>Edit <%= @cocktail.name %></h2>
+  <div class="small-image"> <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %> </div>
+  <%= simple_form_for(@cocktail) do |f| %>
+    <div>
+      <label class="photo-btn">
+      Change photo
+       <span style="display:none;">
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden%>
+      </span>
+      </label>
+    </div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <div class="button-margin"> <%= f.submit "Edit", class:"photo-btn"%>
+    </div>
+  <% end  %>
+</div>
 
 <!-- add this to show -->
-<p><%= link_to "Edit cocktail", edit_cocktail_path %> </p>
+

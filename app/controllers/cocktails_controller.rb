@@ -1,6 +1,15 @@
 class CocktailsController < ApplicationController
   def index
-    @cocktails = Cocktail.all
+    if params[:query].present?
+      # sql_query = " \
+      #    cocktails.name ILIKE :query \
+      #    OR ingredients.name ILIKE :query \
+      # "
+      # @cocktails = Cocktail.left_joins(:ingredients).where(sql_query, query: "%#{params[:query]}%")
+      @cocktails = Cocktail.global_search(params[:query])
+    else
+      @cocktails = Cocktail.all
+    end
   end
 
   def show
@@ -40,7 +49,7 @@ class CocktailsController < ApplicationController
 private
 
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :photo)
   end
 
 end

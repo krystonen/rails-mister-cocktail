@@ -1,8 +1,16 @@
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path('card_img2.jpg')%>);">
-  <div class="card-category">Smoothie</div>
   <div class="card-description">
-    <h2><%= name %></h2>
+    <h3><%= name %></h3>
   </div>
   <%= link_to '', link, class: "card-link" %>
 </div>
 
+
+
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path c.photo.present? ? c.photo : "card_img2.jpg" , crop: :scale, gravity: :center; %>')">
+  <div class="card-description">
+    <h3><%= c.name %></h3>
+  </div>
+  <%= link_to cocktail_path(c), link, class: "card-link" %>
+</div>
